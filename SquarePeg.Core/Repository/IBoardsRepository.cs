@@ -1,4 +1,4 @@
-﻿namespace SquarePeg.Core.Data
+﻿namespace SquarePeg.Core.Repository
 {
     using System.Collections.Generic;
     using SquarePeg.ServiceModel.Types;

@@ -2,10 +2,9 @@
 {
     using System.Data;
     using System.Web.Configuration;
-
     using ServiceStack.OrmLite;
     using ServiceStack.WebHost.Endpoints;
-    using SquarePeg.Core.Data;
+    using SquarePeg.Core.Repository;
     using SquarePeg.ServiceInterface;
 
     public class AppHost : AppHostBase

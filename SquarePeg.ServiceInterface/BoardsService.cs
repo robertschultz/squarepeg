@@ -1,7 +1,7 @@
 ﻿namespace SquarePeg.ServiceInterface
 {
     using ServiceStack.ServiceInterface;
-    using SquarePeg.Core.Data;
+    using SquarePeg.Core.Repository;
     using SquarePeg.ServiceModel;
 
     /// <summary>

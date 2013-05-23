@@ -68,6 +68,9 @@
     <Compile Include="Operations\Boards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Board.cs" />
+    <Compile Include="Types\BoardPermission.cs" />
+    <Compile Include="Types\Permission.cs" />
+    <Compile Include="Types\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

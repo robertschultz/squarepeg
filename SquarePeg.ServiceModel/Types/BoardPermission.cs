@@ -3,10 +3,10 @@
     using ServiceStack.DataAnnotations;
 
     /// <summary>
-    /// Board entity type.
+    /// BoardPermission entity type.
     /// </summary>
-    [Alias("Boards")]
-    public class Board
+    [Alias("BoardPermissions")]
+    public class BoardPermission
     {
         /// <summary>
         /// Gets or sets the board id.
@@ -14,15 +14,14 @@
         /// <value>
         /// The board id.
         /// </value>
-        [AutoIncrement]
         public long BoardId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the user id.
         /// </summary>
         /// <value>
-        /// The name.
+        /// The user id.
         /// </value>
-        public string Name { get; set; }
+        public long UserId { get; set; }
     }
 }
