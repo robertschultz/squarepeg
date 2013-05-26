@@ -12,6 +12,6 @@
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>Instance of a <see cref="BoardsResponse"/> class.</returns>
-        BoardsResponse Get(Boards request);
+         BoardsResponse Get(Boards request);
     }
 }

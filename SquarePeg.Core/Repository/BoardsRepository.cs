@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.Data;
     using ServiceStack.OrmLite;
+
+    using SquarePeg.Common.Aspects;
     using SquarePeg.ServiceModel.Types;
 
     /// <summary>
@@ -24,6 +26,11 @@
             this.connection = connection;
         }
 
+        public BoardsRepository()
+        {
+            
+        }
+
         /// <summary>
         /// Gets a list of boards.
         /// </summary>
@@ -31,6 +38,20 @@
         public List<Board> Get()
         {
             return connection.Select<Board>();
+        }
+    }
+
+    public interface IBlah
+    {
+        void Get();
+    }
+
+    public class Blah : IBlah
+    {
+
+        public void Get()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

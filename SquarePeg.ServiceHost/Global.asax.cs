@@ -2,9 +2,13 @@
 {
     using System;
 
+    using PostSharp.Extensibility;
+
+
     /// <summary>
     /// Global application class.
     /// </summary>
+ 
     public class Global : System.Web.HttpApplication
     {
         /// <summary>
@@ -14,6 +18,7 @@
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         protected void Application_Start(object sender, EventArgs e)
         {
+          
             new AppHost().Init();
         }
     }
