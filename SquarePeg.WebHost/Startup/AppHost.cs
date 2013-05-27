@@ -1,9 +1,12 @@
-﻿namespace SquarePeg.ServiceHost
+﻿namespace SquarePeg.WebHost
 {
     using System.Data;
     using System.Web.Configuration;
+    using System.Web.Mvc;
+
     using ServiceStack.CacheAccess;
     using ServiceStack.Logging;
+    using ServiceStack.Mvc;
     using ServiceStack.OrmLite;
     using ServiceStack.Redis;
     using ServiceStack.WebHost.Endpoints;
@@ -21,7 +24,7 @@
         /// </summary>
         public AppHost()
             : base("SquarePeg Services", typeof(BoardsService).Assembly)
-        {   
+        {
         }
 
         /// <summary>
@@ -30,12 +33,18 @@
         /// <param name="container">The container.</param>
         public override void Configure(Funq.Container container)
         {
+            //Set JSON web services to return idiomatic JSON camelCase properties
+            ServiceStack.Text.JsConfig.EmitCamelCaseNames = true;
+
+            //Enable Authentication
+            //ConfigureAuth(container);
+
             // Create the connection factory for our database.
             var factory = new OrmLiteConnectionFactory(WebConfigurationManager.ConnectionStrings["SquarePeg"].ConnectionString, MySqlDialect.Provider);
 
             // Register database.
             container.Register(c => factory.OpenDbConnection());
-            
+
             // Register logging.
             container.Register<ILog>(c => LogManager.GetLogger(GetType()));
 
@@ -55,6 +64,9 @@
 
             // Set the sharec container; this is used by other shared omponents such as aspects.
             SharedContainer.Container = container;
+
+            //Set MVC to use the same Funq IOC as ServiceStack
+            ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
         }
     }
 }

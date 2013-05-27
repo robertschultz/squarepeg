@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{797147
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquarePeg.ServiceHost", "SquarePeg.ServiceHost\SquarePeg.ServiceHost.csproj", "{8B16C15D-C4AB-47B9-B57F-5758DA654C55}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquarePeg.WebHost", "SquarePeg.WebHost\SquarePeg.WebHost.csproj", "{AF4B886E-7ABF-42A4-99BA-632F8F91B371}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquarePeg.Repository", "SquarePeg.Repository\SquarePeg.Repository.csproj", "{08570EF9-0ED5-4490-9DA0-7BCA1A40083E}"
@@ -36,10 +34,6 @@ Global
 		{7AC325ED-0D17-4F7F-86B6-8CC2F04AFA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AC325ED-0D17-4F7F-86B6-8CC2F04AFA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AC325ED-0D17-4F7F-86B6-8CC2F04AFA1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B16C15D-C4AB-47B9-B57F-5758DA654C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B16C15D-C4AB-47B9-B57F-5758DA654C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B16C15D-C4AB-47B9-B57F-5758DA654C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B16C15D-C4AB-47B9-B57F-5758DA654C55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF4B886E-7ABF-42A4-99BA-632F8F91B371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF4B886E-7ABF-42A4-99BA-632F8F91B371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF4B886E-7ABF-42A4-99BA-632F8F91B371}.Release|Any CPU.ActiveCfg = Release|Any CPU
