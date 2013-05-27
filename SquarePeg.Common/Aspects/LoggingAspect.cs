@@ -50,15 +50,17 @@
         /// <param name="args">Information about the method being executed.</param> 
         public override void OnException(MethodExecutionArgs args)
         {
-            var log = SharedContainer.Container.Resolve<ILog>();
-            log.Fatal("SDfsdfsdf");
+            #if Release
+                var log = SharedContainer.Container.Resolve<ILog>();
+                log.Fatal("SDfsdfsdf");
 
-            Trace.Unindent();
-            Trace.TraceInformation(
-                "{0}.{1}: Exception {2}",
-                args.Method.DeclaringType.FullName, 
-                args.Method.Name,
-                args.Exception.Message);
+                Trace.Unindent();
+                Trace.TraceInformation(
+                    "{0}.{1}: Exception {2}",
+                    args.Method.DeclaringType.FullName, 
+                    args.Method.Name,
+                    args.Exception.Message);
+            #endif
         }
 
         public override void RuntimeInitialize(System.Reflection.MethodBase method)

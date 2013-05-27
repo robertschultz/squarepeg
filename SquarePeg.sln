@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquarePeg.Model", "SquarePe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquarePeg.Service.Tests.Unit", "SquarePeg.Service.Tests.Unit\SquarePeg.Service.Tests.Unit.csproj", "{B7BA81E9-CC45-4E74-972F-032C51A40B47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquarePeg.Common.Test", "SquarePeg.Common.Test\SquarePeg.Common.Test.csproj", "{5A92D0B0-0157-4D95-97FF-FE83E48296CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{2217785B-CEE1-4163-92DD-4646D1938D74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +60,14 @@ Global
 		{B7BA81E9-CC45-4E74-972F-032C51A40B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7BA81E9-CC45-4E74-972F-032C51A40B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7BA81E9-CC45-4E74-972F-032C51A40B47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A92D0B0-0157-4D95-97FF-FE83E48296CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A92D0B0-0157-4D95-97FF-FE83E48296CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A92D0B0-0157-4D95-97FF-FE83E48296CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A92D0B0-0157-4D95-97FF-FE83E48296CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2217785B-CEE1-4163-92DD-4646D1938D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2217785B-CEE1-4163-92DD-4646D1938D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2217785B-CEE1-4163-92DD-4646D1938D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2217785B-CEE1-4163-92DD-4646D1938D74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

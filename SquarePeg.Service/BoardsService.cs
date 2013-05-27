@@ -1,5 +1,10 @@
-﻿namespace SquarePeg.ServiceInterface
+﻿#if DEBUG
+#define SkipPostSharp
+#endif
+
+namespace SquarePeg.ServiceInterface
 {
+    using System;
     using System.Collections.Generic;
 
     using ServiceStack.CacheAccess;
@@ -35,6 +40,16 @@
         /// </param>
         public BoardsService(IBoardsRepository boardsRepository, ICacheClient cacheClient)
         {
+            if (boardsRepository == null)
+            {
+                throw new ArgumentNullException("boardsRepository", "Boards repository is required.");
+            }
+
+            if (cacheClient == null)
+            {
+                throw new ArgumentNullException("cacheClient", "Cache client is required.");
+            }
+
             this.boardsRepository = boardsRepository;
             this.cacheClient = cacheClient;
         }
