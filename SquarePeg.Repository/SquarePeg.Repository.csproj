@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{936A74A5-A936-494A-96ED-5AAD566C5896}</ProjectGuid>
+    <ProjectGuid>{08570EF9-0ED5-4490-9DA0-7BCA1A40083E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SquarePeg.ServiceInterface</RootNamespace>
-    <AssemblyName>SquarePeg.ServiceInterface</AssemblyName>
+    <RootNamespace>SquarePeg.Repository</RootNamespace>
+    <AssemblyName>SquarePeg.Repository</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog">
-      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp">
       <HintPath>..\packages\PostSharp.3.0.26\lib\net20\PostSharp.dll</HintPath>
@@ -42,18 +43,16 @@
     <Reference Include="ServiceStack.Common">
       <HintPath>..\packages\ServiceStack.Common.3.9.46\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=3.9.46.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\packages\ServiceStack.Common.3.9.46\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Logging.NLog">
-      <HintPath>..\packages\ServiceStack.Logging.NLog.1.0.8.0\lib\net35\ServiceStack.Logging.NLog.dll</HintPath>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\packages\ServiceStack.OrmLite.MySql.3.9.45\lib\ServiceStack.OrmLite.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.ServiceInterface">
-      <HintPath>..\packages\ServiceStack.3.9.46\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    <Reference Include="ServiceStack.OrmLite.MySql">
+      <HintPath>..\packages\ServiceStack.OrmLite.MySql.3.9.45\lib\ServiceStack.OrmLite.MySql.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text, Version=3.9.45.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack.Text">
       <HintPath>..\packages\ServiceStack.Text.3.9.46\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -65,23 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardsService.cs" />
-    <Compile Include="IBoardsService.cs" />
+    <Compile Include="BoardsRepository.cs" />
+    <Compile Include="IBoardsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequiresPostSharp.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SquarePeg.Common\SquarePeg.Common.csproj">
       <Project>{9a542e36-6b4f-45f2-b571-e6a81d30aa6d}</Project>
       <Name>SquarePeg.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SquarePeg.Core\SquarePeg.Core.csproj">
-      <Project>{a2db7758-e230-44c8-b65d-8cb777213fe3}</Project>
-      <Name>SquarePeg.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SquarePeg.ServiceModel\SquarePeg.ServiceModel.csproj">
-      <Project>{7ac325ed-0d17-4f7f-86b6-8cc2f04afa1e}</Project>
-      <Name>SquarePeg.ServiceModel</Name>
+    <ProjectReference Include="..\SquarePeg.Model\SquarePeg.Model.csproj">
+      <Project>{de487706-cff2-4943-b952-9526aec49c45}</Project>
+      <Name>SquarePeg.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

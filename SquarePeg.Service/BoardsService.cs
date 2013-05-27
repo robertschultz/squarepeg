@@ -1,12 +1,13 @@
 ﻿namespace SquarePeg.ServiceInterface
 {
-    using ServiceStack.CacheAccess;
-    using ServiceStack.Logging;
-    using ServiceStack.ServiceInterface;
-    using SquarePeg.Core.Repository;
-    using SquarePeg.ServiceModel;
-    using SquarePeg.ServiceModel.Types;
     using System.Collections.Generic;
+
+    using ServiceStack.CacheAccess;
+    using ServiceStack.ServiceInterface;
+    using SquarePeg.Repository;
+    using SquarePeg.ServiceModel;
+    using ServiceStack.Common;
+    using SquarePeg.Common.Caching;
 
     /// <summary>
     /// Boards service that executes the service logic from the repository and performs any other business logic.
@@ -22,10 +23,6 @@
         /// The cache client.
         /// </summary>
         private readonly ICacheClient cacheClient = null;
-
-        public BoardsService()
-        {
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BoardsService"/> class.
@@ -49,15 +46,17 @@
         /// <returns>Instance of a <see cref="BoardsResponse"/> class.</returns>
         public virtual BoardsResponse Get(Boards request)
         {
-            //var boards = this.cacheClient.Get<List<Board>>("Boards_Get");
-            //if (boards == null)
-            //{
-              var  boards = this.boardsRepository.Get();
+            var boards = this.cacheClient.Get<List<Model.Types.Board>>(Keys.BOARDS_GET);
 
-           //     this.cacheClient.Add("Boards_Get", boards);
-            //}
+            if (boards == null)
+            {
+                boards = this.boardsRepository.Get();
+                this.cacheClient.Add(Keys.BOARDS_GET, boards);
+            }
 
-            return new BoardsResponse { Results = boards };
+            var result = boards.ConvertAll(x => x.TranslateTo<ServiceModel.Types.Board>());
+
+            return new BoardsResponse { Results = result };
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿namespace SquarePeg.Core.Repository
+﻿namespace SquarePeg.Repository
 {
     using System.Collections.Generic;
-    using SquarePeg.ServiceModel.Types;
+    using SquarePeg.Model.Types;
 
     /// <summary>
     /// Repository to work with the Boards data source.

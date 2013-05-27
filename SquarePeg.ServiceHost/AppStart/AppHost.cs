@@ -3,15 +3,17 @@
     using System.Data;
     using System.Web.Configuration;
     using ServiceStack.CacheAccess;
+    using ServiceStack.Logging;
     using ServiceStack.OrmLite;
     using ServiceStack.Redis;
     using ServiceStack.WebHost.Endpoints;
-    using SquarePeg.Core.Repository;
-    using SquarePeg.ServiceInterface;
-    using ServiceStack.Logging;
-    using Castle.DynamicProxy;
     using SquarePeg.Common.DependencyInjection;
+    using SquarePeg.Repository;
+    using SquarePeg.ServiceInterface;
 
+    /// <summary>
+    /// Application host used to wire up the service stack components.
+    /// </summary>
     public class AppHost : AppHostBase
     {
         /// <summary>
@@ -34,8 +36,6 @@
             // Register database.
             container.Register(c => factory.OpenDbConnection());
             
-            ProxyGenerator pg = new ProxyGenerator();
-
             // Register logging.
             container.Register<ILog>(c => LogManager.GetLogger(GetType()));
 
@@ -47,19 +47,13 @@
                 .ReusedWithin(Funq.ReuseScope.None);
 
             // Register repositories
-            container.Register<IBoardsRepository>(c => pg.CreateClassProxyWithTarget(
-                new BoardsRepository(container.Resolve<IDbConnection>()),
-                new LoggingInterceptor()));
-  
-             container.Register<IBlah>(c => pg.CreateClassProxyWithTarget(
-                new Blah(),
-                new LoggingInterceptor()));
+            container.Register<IBoardsRepository>(c => new BoardsRepository(container.Resolve<IDbConnection>()));
 
             // Register services.
-            container.Register<IBoardsService>(c => pg.CreateClassProxyWithTarget(
-                new BoardsService(container.Resolve<IBoardsRepository>(), container.Resolve<ICacheClient>()),
-                new LoggingInterceptor()));
+            container.Register<IBoardsService>(
+                c => new BoardsService(container.Resolve<IBoardsRepository>(), container.Resolve<ICacheClient>()));
 
+            // Set the sharec container; this is used by other shared omponents such as aspects.
             SharedContainer.Container = container;
         }
     }

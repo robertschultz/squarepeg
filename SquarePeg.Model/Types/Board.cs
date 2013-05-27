@@ -1,10 +1,11 @@
-﻿namespace SquarePeg.ServiceModel.Types
+﻿namespace SquarePeg.Model.Types
 {
     using ServiceStack.DataAnnotations;
 
     /// <summary>
     /// Board entity type.
     /// </summary>
+    [Alias("Boards")]
     public class Board
     {
         /// <summary>
@@ -13,6 +14,7 @@
         /// <value>
         /// The board id.
         /// </value>
+        [AutoIncrement]
         public long BoardId { get; set; }
 
         /// <summary>

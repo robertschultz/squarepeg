@@ -1,11 +1,9 @@
-﻿namespace SquarePeg.Core.Repository
+﻿namespace SquarePeg.Repository
 {
     using System.Collections.Generic;
     using System.Data;
     using ServiceStack.OrmLite;
-
-    using SquarePeg.Common.Aspects;
-    using SquarePeg.ServiceModel.Types;
+    using SquarePeg.Model.Types;
 
     /// <summary>
     /// Repository to work with the Boards data source.
@@ -26,11 +24,6 @@
             this.connection = connection;
         }
 
-        public BoardsRepository()
-        {
-            
-        }
-
         /// <summary>
         /// Gets a list of boards.
         /// </summary>
@@ -38,20 +31,6 @@
         public List<Board> Get()
         {
             return connection.Select<Board>();
-        }
-    }
-
-    public interface IBlah
-    {
-        void Get();
-    }
-
-    public class Blah : IBlah
-    {
-
-        public void Get()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
