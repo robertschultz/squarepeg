@@ -3,11 +3,13 @@
     using System.Collections.Generic;
     using ServiceStack.ServiceHost;
     using SquarePeg.ServiceModel.Types;
+    using ServiceStack.ServiceInterface;
 
     /// <summary>
     /// Boards service operation.
     /// </summary>
     [Route("/Boards/{Name}")]
+    [Authenticate]
     public class Boards
     {
         /// <summary>

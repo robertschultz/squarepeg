@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace SquarePeg.WebHost.Controllers
+﻿namespace SquarePeg.WebHost.Controllers
 {
-    public class HomeController : Controller
+    using System.Web.Mvc;
+    using ServiceStack.Mvc;
+
+    /// <summary>
+    /// Controller for the default routes.
+    /// </summary>
+    public class HomeController : ServiceStackController
     {
+        /// <summary>
+        /// Default view.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();

@@ -9,6 +9,8 @@ namespace SquarePeg.ServiceInterface
 
     using ServiceStack.CacheAccess;
     using ServiceStack.ServiceInterface;
+    using ServiceStack.ServiceInterface.Auth;
+
     using SquarePeg.Repository;
     using SquarePeg.ServiceModel;
     using ServiceStack.Common;
@@ -61,6 +63,8 @@ namespace SquarePeg.ServiceInterface
         /// <returns>Instance of a <see cref="BoardsResponse"/> class.</returns>
         public virtual BoardsResponse Get(Boards request)
         {
+            IAuthSession session = this.GetSession();
+
             var boards = this.cacheClient.Get<List<Model.Types.Board>>(Keys.BOARDS_GET);
 
             if (boards == null)
