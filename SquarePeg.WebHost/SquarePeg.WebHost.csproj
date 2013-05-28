@@ -162,6 +162,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Startup\AppHost.cs" />
     <Compile Include="Startup\BundleConfig.cs" />
@@ -205,6 +206,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\UnauthenticatedLayout.cshtml" />
     <Content Include="Views\Shared\AuthenticatedLayout.cshtml" />
+    <Content Include="Views\Error\Http404.cshtml" />
+    <Content Include="Views\Error\Http500.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
