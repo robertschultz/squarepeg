@@ -1,4 +1,6 @@
-﻿namespace SquarePeg.WebHost.Controllers
+﻿using System;
+
+namespace SquarePeg.WebHost.Controllers
 {
     using System.Web.Mvc;
     using ServiceStack.Mvc;
@@ -15,6 +17,15 @@
         public ActionResult Index()
         {
             return View();
+        }
+
+        /// <summary>
+        /// Throws an exception.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ThrowException()
+        {
+            throw new Exception("Oops.");
         }
     }
 }
