@@ -15,11 +15,15 @@ namespace SquarePeg.WebHost
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" }); //Prevent exceptions for favicon
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            RouteTable.Routes.MapConnection<MyConnection>("echo", "/echo");
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+           
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNet.SignalR.Client;
 
 namespace SquarePeg.WebHost.Controllers
 {
@@ -19,13 +20,20 @@ namespace SquarePeg.WebHost.Controllers
             return View();
         }
 
-        /// <summary>
-        /// Throws an exception.
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ThrowException()
+        public ActionResult Test(string input)
         {
-            throw new Exception("Oops.");
+            // Connect to the service
+            var connection = new Connection("http://squarepegio.apphb.com/echo");
+
+            // Print the message when it comes in
+            connection.Received += data => Console.WriteLine(data);
+
+            // Start the connection
+            connection.Start().Wait();
+
+            connection.Send(input).Wait();
+
+            return null;
         }
     }
 }

@@ -14,7 +14,6 @@
 <body data-spy="scroll" data-target=".navbar">
     <div class="container">
         <div class="masthead">
-
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="container">
@@ -23,14 +22,15 @@
                             <li><a href="#about">About</a></li>
                             <li><a href="#">Pricing</a></li>
                             <li><a href="#">Contact</a></li>
+                            <li><a href="#">Login</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="jumbotron" id="home">
-            <h1><i class="icon-puzzle-piece"></i>&nbsp;SquarePeg</h1>
-            <p class="lead">Creatively manage your projects, your team, your business and your life with easy to understand data and insights.</p>
+            <h1>SquarePeg</h1>
+            <p class="lead">Make it easy to interact with your fans with easy to understand data and insights.</p>
             <a class="btn btn-large btn-success" href="#">Sign up today</a>
         </div>
         <hr>
@@ -58,6 +58,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    <script src="/Scripts/jquery.signalR-1.1.2.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         var _gauges = _gauges || [];
@@ -70,9 +71,29 @@
             t.src = '//secure.gaug.es/track.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(t, s);
+            
+            var connection = $.connection('/echo');
+
+            connection.received(function (data) {
+                $('#messages').append('<li>' + data + '</li>');
+            });
+
+            connection.start().done(function () {
+                console.log('start');
+                $("#broadcast").click(function () {
+                    console.log('start');
+                    connection.send($('#msg').val());
+                });
+            });
         })();
 
         mixpanel.track('Home Page');
     </script>
+    
+    <input type="text" id="msg" />
+  <input type="button" id="broadcast" value="broadcast" />
+
+  <ul id="messages">
+  </ul>
 </body>
 </html>
