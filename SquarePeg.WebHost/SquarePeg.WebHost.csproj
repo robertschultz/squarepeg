@@ -201,10 +201,15 @@
   <ItemGroup>
     <Content Include="Content\image\rob.jpg" />
     <Content Include="Content\js\ss-validation.js" />
+    <Content Include="Content\nv.d3.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="README.txt" />
+    <Content Include="Scripts\axis.js" />
+    <Content Include="Scripts\d3.v2.js" />
+    <Content Include="Scripts\discreteBar.js" />
+    <Content Include="Scripts\discreteBarChart.js" />
     <Content Include="Scripts\google-analytics.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -219,6 +224,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\mixpanel.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\nv.d3.js" />
+    <Content Include="Scripts\tooltip.js" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -226,6 +234,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -235,6 +244,7 @@
     <Content Include="Views\Shared\AuthenticatedLayout.cshtml" />
     <Content Include="Views\Error\Http404.cshtml" />
     <Content Include="Views\Error\Http500.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -35,5 +35,10 @@ namespace SquarePeg.WebHost.Controllers
 
             return null;
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
     }
 }

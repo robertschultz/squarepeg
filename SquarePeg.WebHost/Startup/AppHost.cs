@@ -83,7 +83,7 @@
             var authRepository = new OrmLiteAuthRepository(factory);
 
             // Create the missing tables if they are not yet configured.
-            // authRepository.CreateMissingTables();
+            authRepository.CreateMissingTables();
 
             // Register the authentication repository.
             container.Register<IUserAuthRepository>(c => authRepository);

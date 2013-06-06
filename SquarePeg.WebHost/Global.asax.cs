@@ -6,42 +6,63 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+    using ServiceStack.MiniProfiler;
 
+    /// <summary>
+    /// HttpApplication class that handles events.
+    /// </summary>
     public class MvcApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// Handles the Start event of the Application control.
+        /// </summary>
         protected void Application_Start()
         {
             new AppHost().Init();
 
             AreaRegistration.RegisterAllAreas();
-
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        /// <summary>
+        /// Handles the Error event of the Application control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void Application_Error(object sender, EventArgs e)
         {
-            
-
             var error = Server.GetLastError();
             var code = (error is HttpException) ? (error as HttpException).GetHttpCode() : 500;
 
-            this.Response.Clear();
-            this.Server.ClearError();
+            Response.Clear();
+            Server.ClearError();
+            Response.TrySkipIisCustomErrors = true;
+            Context.Server.TransferRequest(code != 404 ? "~/Error/Http500" : "~/Error/Http404");
+        }
 
-            this.Response.TrySkipIisCustomErrors = true; 
+        /// <summary>
+        /// Handles the BeginRequest event of the Application control.
+        /// </summary>
+        /// <param name="src">The source of the event.</param>
+        /// <param name="args">The <see cref="EventArgs" /> instance containing the event data.</param>
+        protected void Application_BeginRequest(object src, EventArgs args)
+        {
+            if (Request.IsLocal)
+            {
+                Profiler.Start();
+            }
+        }
 
-            if (code != 404)
-            {
-                this.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                this.Context.Server.TransferRequest("/Error/Http500");
-            }
-            else
-            {
-                this.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                this.Context.Server.TransferRequest("~/Error/Http404", true);
-            }
+        /// <summary>
+        /// Handles the EndRequest event of the Application control.
+        /// </summary>
+        /// <param name="src">The source of the event.</param>
+        /// <param name="args">The <see cref="EventArgs" /> instance containing the event data.</param>
+        protected void Application_EndRequest(object src, EventArgs args)
+        {
+            Profiler.Stop();
         }
     }
 }
