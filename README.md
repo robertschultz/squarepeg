@@ -6,7 +6,7 @@ Note: this open source project is no longer in use.
 
 Maintainers
 ----
-@robertschultz
+[Robert Schultz (robertschultz)](https://github.com/robertschultz)
 
 Todo
 ----
