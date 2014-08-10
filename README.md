@@ -10,4 +10,4 @@ Maintainers
 
 Todo
 ----
-Lots to do, base application confkigured and wired up for all tiers.
+Lots to do, base application configured and wired up for all tiers.
